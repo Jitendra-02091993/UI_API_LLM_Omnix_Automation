@@ -1,16 +1,21 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "rootDir": "../../",
     "allowJs": true,
     "outDir": "out-tsc/playwright",
-    "sourceMap": false
+    "sourceMap": false,
+    "ignoreDeprecations": "6.0"
   },
-  "include": ["src/e2e/**/*.ts", "src/e2e/**/*.js", "playwright.config.ts","src/components/*.ts","src/fixtures/*.ts"],
-  "exclude": [
-    "out-tsc",
-    "test-output",
-    "eslint.config.js",
-    "eslint.config.mjs",
-    "eslint.config.cjs"
+  "references": [
+    {
+      "path": "../../shared-lib"
+    }
+  ],
+  "include": [
+    "src/e2e/**/*.ts",
+    "src/components/**/*.ts",
+    "src/fixtures/**/*.ts",
+    "playwright.config.ts"
   ]
 }

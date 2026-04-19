@@ -1,5 +1,6 @@
 import { Page } from '@playwright/test';
 import { BaseComponents } from './base-components';
+import { Messages } from '@org/shared-constants';
 
 export class ActionPage extends BaseComponents {
   constructor(page: Page) {
@@ -52,7 +53,7 @@ export class ActionPage extends BaseComponents {
 
   async clickLinkUnderFirstHover() {
     await this.firstHoverEle.hover();
-    const alert = await this.handleAlert('Well done you clicked on the link!')
+    const alert = await this.handleAlert(Messages.ALERT.message2);
     await this.firstHoverLink.click();
     await alert.validate();
   }

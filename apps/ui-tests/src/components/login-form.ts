@@ -1,5 +1,6 @@
-import { Page, expect } from '@playwright/test';
+import { Page} from '@playwright/test';
 import { BaseComponents } from './base-components';
+import { Messages } from '@org/shared-constants' ;
 
 export class Loginform extends BaseComponents{
   constructor(page: Page) {
@@ -24,7 +25,7 @@ export class Loginform extends BaseComponents{
   }
 
   async handleAlertPopUp() {
-    const alert = await this.handleAlert('validation failed');
+    const alert = await this.handleAlert(Messages.ALERT.message1);
     await this.loginBtn.click();
     await alert.validate();
   }

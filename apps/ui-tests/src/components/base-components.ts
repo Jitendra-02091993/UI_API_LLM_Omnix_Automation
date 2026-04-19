@@ -2,22 +2,7 @@ import {Page,expect} from '@playwright/test';
 
 export class BaseComponents {
     constructor(protected page: Page) {}
-    // async handleAlert(expectedMessage:string){
-    //     let message="";
-    //     this.page.once('dialog', async (dialog)=> {
-    //         message = dialog.message();
-    //         await dialog.accept();
-    //     });
-    //     return {
-    //         validate: () => {
-    //             if(expectedMessage){
-    //                 expect(message).toContain(expectedMessage);
-    //                 console.log('alert message is: '+message)
-    //             }
-    //         }
-    //     }
-    // }
-
+   
     async handleAlert(expectedMessage:string){
         const dialogPromise = new Promise<string>((resolve) => {
             this.page.once('dialog', async (dialog) => {
