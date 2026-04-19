@@ -1,0 +1,29 @@
+{
+  "name": "ui-tests",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/ui-tests/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/ui-tests",
+        "main": "apps/ui-tests/src/main.ts",
+        "tsConfig": "apps/ui-tests/tsconfig.app.json"
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "options": {
+        "buildTarget": "ui-tests:build"
+      }
+    },
+    "test": {
+      "executor": "@nx/playwright:playwright",
+      "options": {
+        "config": "apps/ui-tests/playwright.config.ts"
+      }
+    }
+  }
+}

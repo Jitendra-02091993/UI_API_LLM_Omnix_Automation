@@ -4,18 +4,32 @@
   "license": "MIT",
   "scripts": {},
   "private": true,
-  "dependencies": {},
   "devDependencies": {
+    "@eslint/js": "^9.8.0",
+    "@nx/devkit": "22.6.5",
+    "@nx/esbuild": "22.6.5",
+    "@nx/eslint": "22.6.5",
+    "@nx/eslint-plugin": "22.6.5",
     "@nx/js": "22.6.5",
+    "@nx/node": "^22.6.5",
+    "@nx/playwright": "^22.6.5",
+    "@playwright/test": "^1.36.0",
     "@swc-node/register": "1.11.1",
     "@swc/core": "1.15.8",
     "@swc/helpers": "0.5.18",
+    "@types/node": "20.19.9",
+    "esbuild": "^0.27.0",
+    "eslint": "^9.8.0",
+    "eslint-config-prettier": "^10.0.0",
+    "eslint-plugin-playwright": "^1.6.2",
     "nx": "22.6.5",
     "prettier": "^3.8.1",
     "tslib": "^2.3.0",
-    "typescript": "~5.9.2"
+    "typescript": "~5.9.2",
+    "typescript-eslint": "^8.40.0"
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "dependencies": {}
 }
