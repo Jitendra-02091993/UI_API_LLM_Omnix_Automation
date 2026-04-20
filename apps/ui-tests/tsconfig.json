@@ -16,6 +16,7 @@
     "src/e2e/**/*.ts",
     "src/components/**/*.ts",
     "src/fixtures/**/*.ts",
-    "playwright.config.ts"
+    "playwright.config.ts",
+    "src/ui-wrapper.ts"
   ]
 }

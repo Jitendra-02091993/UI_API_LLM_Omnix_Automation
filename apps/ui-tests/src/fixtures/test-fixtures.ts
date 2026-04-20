@@ -3,12 +3,14 @@ import { ContactUsForm } from '../components/contactus-form';
 import { HomePage } from '../components/homePage';
 import { Loginform } from '../components/login-form';
 import { ActionPage } from '../components/actionPage';
+import { IframePage } from '../components/iframePage';
 
 type Fixtures = {
   homePage: HomePage;
   contactUsForm: ContactUsForm;
   loginForm: Loginform;
   actionPage: ActionPage;
+  iframePage: IframePage;
 };
 
 export const test = base.extend<Fixtures>({
@@ -32,6 +34,12 @@ export const test = base.extend<Fixtures>({
   actionPage: async ({homePage}, use) => {
     const newPage = await homePage.openActionPage();
     const form = new ActionPage(newPage);
+    await use(form);
+  },
+
+  iframePage : async ({homePage}, use) => {
+    const newPage = await homePage.openIframePage();
+    const form = new IframePage(newPage);
     await use(form);
   }
 });

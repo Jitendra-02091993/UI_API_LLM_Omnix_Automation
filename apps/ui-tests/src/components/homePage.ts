@@ -1,9 +1,12 @@
 import { Page, BrowserContext } from '@playwright/test';
+import { BaseComponents } from './base-components';
 
-export class HomePage {
+export class HomePage extends BaseComponents {
   private _context?: BrowserContext;
 
-  constructor(private page: Page) {}
+  constructor(page: Page) {
+    super(page)
+  }
 
   private get context(): BrowserContext {
     if (!this._context) {
@@ -28,6 +31,10 @@ export class HomePage {
     return this.page.getByRole('heading', { name: "ACTIONS", level: 1 });
   }
 
+  get iframeBtn (){
+    return this.page.getByRole('heading', { name: "IFRAME", level: 1 });
+  }
+
   private async openNewPage(triggerElement: any) {
     const [newPage] = await Promise.all([
       this.context.waitForEvent('page'),
@@ -48,4 +55,10 @@ export class HomePage {
   async openActionPage() {
     return this.openNewPage(this.actionPageBtn);
   }
+
+  async openIframePage(){
+    return this.openNewPage(this.iframeBtn);
+  }
+
+
 }

@@ -32,6 +32,7 @@ export default defineConfig({
     actionTimeout: 0,
 
     navigationTimeout: 30000,
+    
   },
 
   projects: [
