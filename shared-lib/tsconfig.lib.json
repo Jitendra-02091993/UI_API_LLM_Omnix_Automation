@@ -11,5 +11,5 @@
     "module": "ES2015",
     "moduleResolution": "bundler"
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts", "utils/**/*.ts"],
 }

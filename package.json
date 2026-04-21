@@ -2,7 +2,10 @@
   "name": "@org/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "test-ui": "npx nx test ui-tests",
+    "test-api": "npx nx test api-tests"
+  },
   "private": true,
   "devDependencies": {
     "@eslint/js": "^9.8.0",
@@ -18,6 +21,7 @@
     "@swc/core": "1.15.8",
     "@swc/helpers": "0.5.18",
     "@types/node": "20.19.9",
+    "dotenv": "^17.4.2",
     "esbuild": "^0.27.0",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^10.0.0",
@@ -30,6 +34,5 @@
   },
   "workspaces": [
     "packages/*"
-  ],
-  "dependencies": {}
+  ]
 }

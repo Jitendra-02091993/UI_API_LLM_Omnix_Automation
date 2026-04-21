@@ -1,17 +1,21 @@
 import { defineConfig, devices } from '@playwright/test';
+import * as dotenv from 'dotenv';
+
+// Load environment variables from .env file
+dotenv.config();
 
 export default defineConfig({
   testDir: './src/e2e',
-
   timeout: 30000,
-
   expect: {
     timeout: 5000,
   },
+  
+  // Add a retry specifically for CI environments to handle network flakes
+  retries: process.env.CI ? 1 : 0,
 
-  retries: 0,
-
-  workers: 21,
+  // Throttle workers in CI, but let it rip locally or use a specific env override
+  workers: process.env.CI ? 4 : process.env.WORKERS ? Number(process.env.WORKERS) : undefined,
 
   reporter: [
     ['list'],
@@ -19,20 +23,17 @@ export default defineConfig({
   ],
 
   use: {
-    baseURL: 'https://webdriveruniversity.com/',
-
-    headless: false,
-
-    trace: 'on-first-retry',
-
-    screenshot: 'only-on-failure',
-
-    video: 'retain-on-failure',
-
-    actionTimeout: 0,
-
-    navigationTimeout: 30000,
+    // Dynamically inject the base URL, falling back to your default
+    baseURL: process.env.BASE_URL || 'https://rahulshettyacademy.com/',
     
+    // Force headless mode in CI
+    headless: process.env.CI ? true : false,
+    
+    trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
+    actionTimeout: 0,
+    navigationTimeout: 30000,
   },
 
   projects: [
@@ -40,15 +41,5 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
-
-    // Enable later when needed
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
-    // },
   ],
 });

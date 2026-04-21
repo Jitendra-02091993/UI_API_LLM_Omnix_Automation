@@ -8,15 +8,15 @@ export class Loginform extends BaseComponents{
   }
 
   get usernameBtn() {
-    return this.page.getByRole('textbox', { name: 'Username' });
+    return this.ui.textBox('Username');
   }
 
   get passwordBtn() {
-    return this.page.getByRole('textbox', { name: 'Password' });
+    return this.ui.textBox('Password');
   }
 
   get loginBtn() {
-    return this.page.getByRole('button', { name: 'Login' });
+    return this.ui.button('Login')
   }
 
   async login(username: string, password: string) {

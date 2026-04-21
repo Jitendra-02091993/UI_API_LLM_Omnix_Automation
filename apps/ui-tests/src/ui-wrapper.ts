@@ -8,7 +8,7 @@ export class UI {
 
   inputByPlaceholder(name: string) {
     return this.root.getByPlaceholder(name);
-  }
+  } 
 
   button(name: string) {
     return this.root.getByRole('button', { name });
@@ -20,5 +20,17 @@ export class UI {
 
   heading(name: string) {
     return this.root.getByRole('heading', { name });
+  }
+
+  textBox(name:string) {
+    return this.root.getByRole('textbox', {name});
+  }
+
+  locator(ele:string){
+    return this.root.locator(ele)
+  }
+
+  getByRole(role: string, options?: any) {
+    return this.root.getByRole(role as any, options);
   }
 }

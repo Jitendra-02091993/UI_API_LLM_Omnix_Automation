@@ -20,19 +20,19 @@ export class HomePage extends BaseComponents {
   }
 
   get contactUsBtn() {
-    return this.page.getByRole('heading', { name: 'CONTACT US', level: 1 });
+    return this.ui.getByRole('heading', { name: 'CONTACT US', level: 1 });
   }
 
   get loginPortalBtn() {
-    return this.page.getByRole('heading', { name: 'LOGIN PORTAL', level: 1 });
+    return this.ui.getByRole('heading', { name: 'LOGIN PORTAL', level: 1 });
   }
 
   get actionPageBtn() {
-    return this.page.getByRole('heading', { name: "ACTIONS", level: 1 });
+    return this.ui.getByRole('heading', { name: "ACTIONS", level: 1 });
   }
 
   get iframeBtn (){
-    return this.page.getByRole('heading', { name: "IFRAME", level: 1 });
+    return this.ui.getByRole('heading', { name: "IFRAME", level: 1 });
   }
 
   private async openNewPage(triggerElement: any) {
