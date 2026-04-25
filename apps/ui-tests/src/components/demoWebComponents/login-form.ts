@@ -1,10 +1,11 @@
 import { Page} from '@playwright/test';
 import { BaseComponents } from './base-components';
 import { Messages } from '@org/shared-constants' ;
+import { TestContext } from 'shared-lib/orchestration-lib/TestContext';
 
 export class Loginform extends BaseComponents{
-  constructor(page: Page) {
-    super(page);
+  constructor(page: Page, ctx: TestContext) {
+    super(page, ctx);
   }
 
   get usernameBtn() {

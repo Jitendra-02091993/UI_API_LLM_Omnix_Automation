@@ -33,4 +33,12 @@ export class UI {
   getByRole(role: string, options?: any) {
     return this.root.getByRole(role as any, options);
   }
+
+  radio(name:string) {
+    return this.root.getByRole('radio', {name, checked: false, exact: true});
+  }
+
+  checkBox() {
+    return this.root.locator(`//input[@type='checkbox']`)
+  }
 }

@@ -1,25 +1,49 @@
 import { test } from '../../fixtures/test-fixtures';
-import { Logger } from '@org/shared-constants';
-import { TEST_DATA } from '@org/shared-constants';
+import { Logger, TEST_DATA } from '@org/shared-constants';
+import { registerPages } from '../../factories/page-factory';
 
 test.describe('Validate Practice App', () => {
-  test('validate numbers of test apps @demo', async ({practiceAppPage, dialogComponents}) => {
+  test('complete the registration @register', async ({
+    practiceAppPage,
+    dialogComponents,
+    testContext,
+    user,
+    }) => {
     const appList = await practiceAppPage.getListOfAllApps();
     const count = await appList.count();
-    Logger.info('ele list is :: ' + count);
 
-    let counter = 0;
-    const buttons = practiceAppPage.listOfStartPrcaticingBtn;
-    while (counter < count) {
-      const details = await appList.nth(counter).innerText();
+    const buttons = practiceAppPage.listOfStartPracticingBtn;
+
+    for (let i = 0; i < count; i++) {
+      const details = await appList.nth(i).innerText();
+
       if (details.includes('Client Dashboard')) {
-        await buttons.nth(counter).click();
-        await dialogComponents.fillDialogIfVisible(TEST_DATA.DIALOG)
-        Logger.info('Clicked on Start Practicing button for Client Dashboard app' + appList.nth(counter).innerText()); 
+        await buttons.nth(i).click();
+
+        await dialogComponents.fillDialogIfVisible(TEST_DATA.DIALOG);
         break;
       }
-      counter ++;
     }
-    await practiceAppPage.LoginHeader.waitFor({state: 'visible'})
+
+     const [newPage] = await Promise.all([
+          practiceAppPage.getContext().waitForEvent('page'),
+          dialogComponents.submitDialog(),
+        ]);
+      
+        registerPages(newPage, testContext);
+        await newPage.waitForLoadState();
+        await testContext.pages.register.clickRegisterLink();
+        await testContext.pages.register.completeRegistration();
+        await testContext.pages.login.login(user.emailId, user.password);
   });
+
+  test.afterEach(async ({ testContext }) => {
+  Logger.info('Closing the Practice App page');
+  Logger.info('Test execution completed');
+
+  const user = testContext.get('user');
+
+  Logger.info('username is :: ' + user.emailId);
+  Logger.info('password is :: ' + user.password);
 });
+})

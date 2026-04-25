@@ -32,15 +32,18 @@ export class DialogComponents extends BaseComponents {
     await this.dialog.waitFor({ state: 'visible' });
     await this.firstNameInput.fill(data.fullName);
     await this.emailInput.fill(data.email);
+  }
+
+  async submitDialog() {
     await this.verifyBtn.click();
   }
 
   async fillDialogIfVisible(data: DialogData) {
     if (await this.dialog.isVisible()) {
-        Logger.step("Dialog is visible")
+      Logger.step('Dialog is visible');
       await this.fillDialogForm(data);
-    }else{
-        Logger.info("Dialog is not visible")
+    } else {
+      Logger.info('Dialog is not visible');
     }
   }
 }

@@ -7,16 +7,12 @@
     "sourceMap": false,
     "ignoreDeprecations": "6.0"
   },
-  "references": [
-    {
-      "path": "../../shared-lib"
-    }
-  ],
   "include": [
     "src/e2e/**/*.ts",
     "src/components/**/*.ts",
     "src/fixtures/**/*.ts",
     "playwright.config.ts",
-    "src/ui-wrapper.ts"
+    "src/ui-wrapper.ts",
+    "src/factories/**/*.ts"
   ]
 }

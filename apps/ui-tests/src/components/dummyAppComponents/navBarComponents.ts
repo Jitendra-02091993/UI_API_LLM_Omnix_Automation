@@ -1,19 +1,13 @@
 import { BrowserContext, Page } from '@playwright/test';
 import { BaseComponents } from '../demoWebComponents/base-components';
 import { TEST_DATA } from '@org/shared-constants';
+import { TestContext } from '@org/orchestration-lib';
 
 export class NavbarComponents extends BaseComponents {
-  private _context?: BrowserContext;
+  protected _context?: BrowserContext;
 
-  constructor(page: Page) {
-    super(page);
-  }
-
-  private get context(): BrowserContext {
-    if (!this.context) {
-      this._context = this.page.context();
-    }
-    return this._context!;
+  constructor(page: Page, ctx: TestContext) {
+    super(page, ctx);
   }
 
   get practiceApp() {
@@ -28,14 +22,6 @@ export class NavbarComponents extends BaseComponents {
       await this.practiceApp.click();
   }
 
-  private async openNewPage(triggerElement: any) {
-    const [newPage] = await Promise.all([
-      this.context.waitForEvent('page'),
-      triggerElement.click(),
-    ]);
-    await newPage.waitForLoadState();
-    return newPage;
-  }
 
   
   

@@ -1,8 +1,8 @@
-import {Page, test, expect} from "@playwright/test"
+import { Page, test, expect } from '@playwright/test';
+import { TestContext } from 'orchestration-lib';
 
 export class HELPERS {
-
-    async waitFor(millsec: number){
-        
-    }
+  async createPages(page: Page, ctx: TestContext) {
+    
+  }
 }

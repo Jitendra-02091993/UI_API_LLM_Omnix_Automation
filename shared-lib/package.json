@@ -1,5 +1,6 @@
 {
-  "name": "@org/shared-constants",
+  "name": "@org/orchestration-lib",
   "version": "0.0.1",
-  "private": true
+  "private": true,
+  "type": "module"
 }

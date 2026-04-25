@@ -8,8 +8,8 @@
     "emitDeclarationOnly": true,
     "forceConsistentCasingInFileNames": true,
     "types": ["node"],
-    "module": "ES2015",
-    "moduleResolution": "bundler"
+    "module": "node16",
+    "moduleResolution": "node16"
   },
-  "include": ["src/**/*.ts", "utils/**/*.ts"],
+  "include": ["src/**/*.ts", "utils/**/*.ts", "orchestration-lib/**/*.ts"],
 }

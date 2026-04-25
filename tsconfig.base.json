@@ -6,21 +6,46 @@
     "emitDeclarationOnly": true,
     "importHelpers": true,
     "isolatedModules": true,
-    "lib": ["es2022","dom"],
+    "lib": [
+      "es2022",
+      "dom"
+    ],
     "module": "esnext",
     "moduleResolution": "bundler",
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
+    "ignoreDeprecations": "6.0",
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "skipLibCheck": true,
     "strict": true,
     "target": "es2022",
-    "customConditions": ["@org/source"],
+    "customConditions": [
+      "@org/source"
+    ],
     "paths": {
-    "@org/shared-constants": ["shared-lib/src/index.ts"]
+      "@org/shared-constants": [
+        "shared-lib/src/index.ts"
+      ],
+      "@org/orchestration-lib": [
+        "shared-lib/orchestration-lib/index.ts"
+      ],
+      "@org/orchestration-lib/*": [
+        "shared-lib/orchestration-lib/*"
+      ],
+      "@org/utils": [
+        "shared-lib/utils/index.ts"
+      ]
+    },
+    "include": [
+      "apps/**/*.ts",
+      "shared-lib/**/*.ts"
+    ],
+    "exclude": [
+      "node_modules",
+      "dist",
+      "out-tsc"
+    ]
   }
-  }
-  
 }
